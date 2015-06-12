@@ -273,7 +273,7 @@ nav ul li a{
 
 	@include breakpoint($medium-viewport){
 		font-size:3.8rem;
-		margin-bottom: 0rem;
+		margin-bottom: 5rem;
 	}
 
 }
@@ -290,12 +290,8 @@ nav ul li a{
 	}
 
 	@include breakpoint($large-viewport){
-		&:nth-of-type(2){
-			margin-left: span(4);
-		}
-		&:nth-of-type(3){
-			margin-left: span(4.5);
-		}
+		font-size: 2rem;
+		margin-left: span(4);
 	}
 
 }
@@ -314,7 +310,10 @@ nav ul li a{
 
 	@include breakpoint($medium-viewport){
 		font-size:6.1rem;
-		line-height: 5.5rem;
+		line-height: 5.8rem;
+	}
+	@include breakpoint($large-viewport){
+		line-height: 6.3rem;
 	}
 }
 
@@ -342,6 +341,10 @@ nav ul li a{
 		width: span(9);
 		padding-left:span(1);
 	}
+
+	@include breakpoint($large-viewport){
+		width:span(11);
+	}
 }
 #line1{
 	margin-bottom:-18px;
@@ -363,6 +366,10 @@ nav ul li a{
 		margin-left: span(7);
 	}
 
+	@include breakpoint($large-viewport){
+		margin-left: span(8.5);
+	}
+
 }
 
 #about .intro p{
@@ -375,11 +382,6 @@ nav ul li a{
 
 //==== About Services
 #about .services{
-	// saving for desktop
-	//@include span(3.5 of 12);
-	//&:first-of-type{
-	//	margin-left: span(0.5);
-	//}
 	@include span(full no-gutters break);
 	padding-left:1rem;
 	padding-right:1rem;
@@ -393,6 +395,18 @@ nav ul li a{
 			margin-bottom: 5.2rem;
 		}
 	}
+	@include breakpoint($large-viewport){
+		@include span(3);
+		clear:none;
+		margin-left:0rem;
+		&:first-of-type{
+			margin-left: span(1.5);
+		}
+		&:last-of-type{
+			clear:right;
+			margin-bottom: 10rem;
+		}
+	}
 
 }
 
@@ -401,6 +415,12 @@ nav ul li a{
 //==== About Bios
 #about .whoContainer > .intro{
 	margin-bottom:1rem;
+}
+
+#about .whoContainer > .intro > h2{
+	@include breakpoint($large-viewport){
+		width:span(10);
+	}
 }
 #line3{
 	margin-bottom:-18px;
@@ -438,16 +458,35 @@ nav ul li a{
 			margin-bottom: 6rem;
 		}
 	}
+	@include breakpoint($large-viewport){
+		clear:none;
+		@include span(4);
+		&:nth-of-type(even){
+			margin-left:span(1);
+		}
+		&:last-of-type{
+			margin-bottom: 5.8rem;
+			clear:right;
+		}	
+
+	}
 }
 .photoAndName {
 	@include span(full no-gutters break);
 	margin-bottom:0.5rem;
+
+	@include breakpoint($large-viewport){
+	}
 }
 .photoAndName > .imgContainer{
 	@include span(3);
 
 	@include breakpoint($medium-viewport){
 		@include span(2);
+	}
+	@include breakpoint($large-viewport){
+		@include span(3);
+		padding-bottom:1rem;
 	}
 }
 
@@ -466,6 +505,9 @@ nav ul li a{
 		width:span(6);
 		padding-top:1rem;
 	}
+	@include breakpoint($large-viewport){
+		@include span(9);
+	}
 }
 
 //==== About contact info
@@ -473,6 +515,11 @@ nav ul li a{
 	margin-bottom:1rem;
 }
 
+#about .getInTouch > .intro > h2{
+	@include breakpoint($large-viewport){
+		width: span(10);
+	}
+}
 #line5{
 	margin-bottom:-18px;
 	//margin-top:-12px;
@@ -491,6 +538,9 @@ nav ul li a{
 
 	@include breakpoint($medium-viewport){
 		margin-left: span(7.5);
+	}
+	@include breakpoint($large-viewport){
+		margin-left:span(8);
 	}
 
 }
@@ -545,6 +595,10 @@ footer p.snazzyFooter{
 	@include breakpoint($medium-viewport){
 		margin-left: span(1);
 		font-size: 1.3rem;
+	}
+
+	@include breakpoint($large-viewport){
+		font-size:1.6rem;
 	}
 }
 
