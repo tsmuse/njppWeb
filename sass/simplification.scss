@@ -1,0 +1,551 @@
+/* 
+ * Are you looking for the styles to figure out how something works?  
+ * This site was built using Jekyll, SASS, Breakpoint, and Susy. You should check out the 
+ * sass file on github to see the real code. https://github.com/tsmuse/njppWeb
+ * 
+ * Author: Tony Santos (www.notjustprettypictures.com, github: tsmuse)
+ * If you've forked this project, please this comment section in-tact for attribution. 
+ */
+
+@charset "utf-8";
+
+// base styles from compass + Susy for grid + breakpoint for media-queries 
+@import "normalize";
+@import "compass";
+@import "susy";
+@import "breakpoint";
+
+//=== Variables ===
+
+$base-font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$base-line-height: 1.5;
+
+$medium-viewport: 490px;
+$large-viewport: 990px;
+
+$bgColor: #f7f7ff;
+
+//== Functions ===
+
+//RGBA color builder
+@function -ts-color($rgbValue, $alpha:1){
+	@return rgba($rgbValue, $alpha);
+}
+
+//=== Mixins ===
+
+//auto-prefix CSS animations
+@mixin selectanimation($animation) {
+    -webkit-transition: $animation;
+    -moz-transition: $animation;
+    -ms-transition: $animation;
+    -o-transition: $animation;
+    transition: $animation;
+  }
+
+//== Susy grid setup
+
+$susy: (
+	columns: 12,
+	gutters: 1/4,
+	math: fluid,
+	output: float,
+	gutter-position: inside,
+	global-box-sizing: border-box,
+	);
+
+html{
+	box-sizing: border-box;
+}
+*{
+	box-sizing:inherit;
+}
+
+
+a{
+	color: -ts-color(#000, 0.8);
+	text-decoration: none;
+	
+	&:hover{
+		color: -ts-color(#000, 0.4);
+	}
+}
+
+//==== reusable classes
+.decoBox{
+	background-color: -ts-color(#000, 0.5);
+	width: span(4 of 12);
+	height:2px;
+
+	@include breakpoint($medium-viewport){
+		width: span(2);
+	}
+}
+
+.underline{
+	border-bottom:1px solid -ts-color(#000, 0.25);
+	font-weight:600;
+}
+.invisible{
+	display:none;
+}
+
+.active{
+	border-bottom:1px solid #fff;
+}
+.smImg{
+	display:inline;
+	@include breakpoint($medium-viewport){
+		display:none;
+	}
+}
+.mdImg{
+	display:none;
+	@include breakpoint($medium-viewport){
+		display:inline;
+	}
+	@include breakpoint($large-viewport){
+		display:none;
+	}
+}
+.lgImg{
+	display:none;
+	@include breakpoint($large-viewport){
+		display:inline;
+	}
+}
+
+//==== body setup
+#container{
+	@include container;
+}
+
+body{
+	font-family:$base-font-family;
+	font-size:$base-font-size;
+	line-height:$base-line-height;
+}
+
+//==== nav
+.desktopMenu{
+	display:none;
+}
+nav{
+	@include span(full);
+	height:45px;
+	position:fixed;
+	top:0;
+	z-index:999;
+}
+
+nav h1{
+	display:inline-block;
+	@include span(9);
+	font-weight:300;
+	font-size:1.2rem;
+	margin-top:8px;
+
+}
+nav ul{
+	list-style:none;
+	@include span(2);
+	margin-top:8px;
+}
+
+nav ul li{
+	display:inline-block;
+	width:span(0.9 of 4);
+
+}
+nav ul li a{
+	text-decoration:none;
+	color:#fff;
+	font-size:1.1rem;
+	font-weight:300;
+}
+
+//==== page content
+#content{
+	@include span(full no-gutters);
+	background-color:-ts-color($bgColor);
+	@include selectanimation(background-color 1s ease-in-out);
+}
+//==== top image area
+
+#pageHead{
+	@include span (full no-gutters break);
+	background: url(../imgs/seaAndSky_sm.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#000;
+
+	position:relative;
+	top:-1px;
+	height:89vh;
+	
+
+	@include breakpoint($medium-viewport){
+		background: url(../imgs/seaAndSky_md.jpg) no-repeat center center scroll;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+
+		height:90vh;
+	}
+	@include breakpoint($large-viewport){
+		background: url(../imgs/seaAndSky.jpg) no-repeat center center scroll;	
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+
+		height:85vh;
+	}
+}
+.title{
+	color: #fff;
+	font-size:3rem;
+	font-weight:300;
+	@include breakpoint($medium-viewport){
+		font-size:4.5rem;
+	}
+
+	@include breakpoint($large-viewport){
+
+	}
+}
+
+.word1, .word2, .word3, .word4{
+	@include span(isolate 3 at 2.5 break);
+	display:inline-block;
+	margin-bottom:-2.65rem;
+
+	@include breakpoint($medium-viewport){
+		margin-bottom: -4.5rem;
+	}
+}
+
+.word1{
+	margin-top: 5rem;
+	@include breakpoint($medium-viewport){
+		margin-top:10rem;
+	}
+
+	@include breakpoint($large-viewport){
+		margin-top: 4rem;
+	}
+}
+
+.initialContent{
+	background-color:#000;
+	color:#fff;
+	@include selectanimation(background 0.5s ease-in-out);
+}
+#njpp{
+	@include span(full no-gutters);
+	min-height:60vh;
+	float:none;
+	position:fixed;
+}
+
+//==== motto
+
+#pathos{
+	@include span(full no-gutters break);
+	min-height:245px;
+	@include breakpoint($medium-viewport){
+		min-height: 376px;
+	}
+	@include breakpoint($large-viewport){
+		min-height: 500px;
+	}
+}
+
+#pathos h2{
+	font-size: 1.8rem;
+	color:-ts-color(#000);
+	margin-left:1rem;
+	margin-top:0.5rem;
+
+	@include breakpoint($medium-viewport){
+		font-size:3.8rem;
+		margin-bottom: 0rem;
+	}
+
+}
+.present{
+	font-weight:300;
+	font-size:1.3rem;
+	margin-left:span(2);
+	color:-ts-color(#000);
+	margin-bottom:-0.3rem;
+
+	@include breakpoint($medium-viewport){
+		font-size: 1.67rem;
+		margin-left: span(3.5);
+	}
+
+	@include breakpoint($large-viewport){
+		&:nth-of-type(2){
+			margin-left: span(4);
+		}
+		&:nth-of-type(3){
+			margin-left: span(4.5);
+		}
+	}
+
+}
+
+//==== The larger "about" section aka the rest of the page until the footer
+#about{
+	@include span(full no-gutters break);
+	min-height:800px;
+}
+
+#about h2{
+	width: span(full);
+	font-size:3.1rem;
+	padding-left: span(0.5);
+	line-height:3.4rem;
+
+	@include breakpoint($medium-viewport){
+		font-size:6.1rem;
+		line-height: 5.5rem;
+	}
+}
+
+#about h3{
+	font-size:1.4rem;
+	font-weight:300;
+	margin-bottom:-0.5rem;
+	line-height: 2rem;
+}
+
+
+//==== Intro to the about section
+#about .intro{
+	@include span(full no-gutters break);
+	padding-left:1rem;
+	padding-right:1rem;
+	font-size:1.2rem;
+	margin-bottom:-0.6rem;
+}
+
+#about .intro h2{
+	margin-bottom:1.5rem;
+
+	@include breakpoint($medium-viewport){
+		width: span(9);
+		padding-left:span(1);
+	}
+}
+#line1{
+	margin-bottom:-18px;
+	//margin-top:-12px;
+	margin-left:span(1);
+
+	@include breakpoint($medium-viewport){
+		margin-left: span(0.5);
+		margin-bottom: -3rem;
+	}
+
+}
+#line2{
+	//margin-bottom:-18px;
+	margin-top:-12px;
+	margin-left:span(6);
+
+	@include breakpoint($medium-viewport){
+		margin-left: span(7);
+	}
+
+}
+
+#about .intro p{
+	@include breakpoint($medium-viewport){
+		@include span(9);
+		margin-left:span(1);
+	}
+}
+
+
+//==== About Services
+#about .services{
+	// saving for desktop
+	//@include span(3.5 of 12);
+	//&:first-of-type{
+	//	margin-left: span(0.5);
+	//}
+	@include span(full no-gutters break);
+	padding-left:1rem;
+	padding-right:1rem;
+	&:last-of-type{
+		margin-bottom:1.8rem;
+	}
+	@include breakpoint($medium-viewport){
+		@include span(8);
+		margin-left: span(2);
+		&:last-of-type{
+			margin-bottom: 5.2rem;
+		}
+	}
+
+}
+
+
+
+//==== About Bios
+#about .whoContainer > .intro{
+	margin-bottom:1rem;
+}
+#line3{
+	margin-bottom:-18px;
+	//margin-top:-12px;
+	margin-left:span(1);
+
+	@include breakpoint($medium-viewport){
+		margin-left: span(0.5);
+		margin-bottom:-3rem;
+	}
+
+}
+#line4{
+	//margin-bottom:-18px;
+	margin-top:-12px;
+	margin-left:span(5.5);
+
+	@include breakpoint($medium-viewport){
+		margin-left: span(6.25);
+	}
+
+}
+
+#about .bio{
+	@include span(full no-gutters break);
+	padding-left:1rem;
+	padding-right:1rem;	
+	&:last-of-type{
+		margin-bottom: 1.8rem;
+	}
+	@include breakpoint($medium-viewport){
+		@include span(10);
+		margin-left: span(1);
+		&:last-of-type{
+			margin-bottom: 6rem;
+		}
+	}
+}
+.photoAndName {
+	@include span(full no-gutters break);
+	margin-bottom:0.5rem;
+}
+.photoAndName > .imgContainer{
+	@include span(3);
+
+	@include breakpoint($medium-viewport){
+		@include span(2);
+	}
+}
+
+.imgContainer img{
+	@include breakpoint($medium-viewport){
+		width:100%;
+	}
+}
+.photoAndName > h3{
+	@include span(9);
+	margin-top:0;
+	padding-left:0.25rem;
+
+	@include breakpoint($medium-viewport){
+		font-size: 1.8rem !important;
+		width:span(6);
+		padding-top:1rem;
+	}
+}
+
+//==== About contact info
+#about .getInTouch > .intro{
+	margin-bottom:1rem;
+}
+
+#line5{
+	margin-bottom:-18px;
+	//margin-top:-12px;
+	margin-left:span(1);
+
+	@include breakpoint($medium-viewport){
+		margin-left: span(0.5);
+		margin-bottom:-3rem;
+	}
+
+}
+#line6{
+	//margin-bottom:-18px;
+	margin-top:-12px;
+	margin-left:span(6);
+
+	@include breakpoint($medium-viewport){
+		margin-left: span(7.5);
+	}
+
+}
+#about .contact{
+	@include span(full no-gutters break);
+	padding-left:1rem;
+	padding-right:1rem;
+	margin-bottom:1.8rem;
+
+	@include breakpoint($medium-viewport){
+		@include span(10);
+		margin-left:span(1);
+		margin-bottom: 5.8rem;
+	}	
+}
+
+#about .contact a{
+	@include span(12);
+
+	@include breakpoint($medium-viewport){
+		width:span(6);
+		float:none;
+	}
+}
+
+//==== Footer
+footer{
+	@include span(full no-gutters);
+	min-height:5rem;
+	background-color:-ts-color(#000,0.85);
+}
+footer p{
+	@include span(full no-gutters);
+	color:-ts-color(#fff, 1.0);
+	font-size:0.8rem;
+	text-align:center;
+
+	@include breakpoint($medium-viewport){
+		padding-left:span(1);
+		text-align: left;
+	}
+	
+}
+
+footer p.snazzyFooter{
+	@include span (8 break);
+	font-weight:600;
+	font-size:1.1rem;
+	text-align:left;
+	margin-left:span(2);
+
+	@include breakpoint($medium-viewport){
+		margin-left: span(1);
+		font-size: 1.3rem;
+	}
+}
+
+

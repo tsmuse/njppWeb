@@ -1,0 +1,250 @@
+/* 
+ * Are you looking for the styles to figure out how something works?  
+ * This site was built using Jekyll, SASS, Breakpoint, and Susy. You should check out the 
+ * sass file on github to see the real code. https://github.com/tsmuse/njppWeb
+ * 
+ * Author: Tony Santos (www.notjustprettypictures.com, github: tsmuse)
+ * If you've forked this project, please this comment section in-tact for attribution. 
+ */
+
+@charset "utf-8";
+
+// base styles from compass + Susy for grid + breakpoint for media-queries 
+@import "normalize";
+@import "compass";
+@import "susy";
+@import "breakpoint";
+
+//=== Variables ===
+
+$base-font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$base-line-height: 1.5;
+
+$bgColor: #f7f7ff;
+
+//== Functions ===
+
+//RGBA color builder
+@function -ts-color($rgbValue, $alpha:1){
+	@return rgba($rgbValue, $alpha);
+}
+
+//=== Mixins ===
+
+//auto-prefix CSS animations
+@mixin selectanimation($animation) {
+    -webkit-transition: $animation;
+    -moz-transition: $animation;
+    -ms-transition: $animation;
+    -o-transition: $animation;
+    transition: $animation;
+  }
+
+//== Susy grid setup
+
+$susy: (
+	columns: 12,
+	gutters: 1/4,
+	math: fluid,
+	output: float,
+	gutter-position: inside,
+	global-box-sizing: border-box,
+	);
+
+#container{
+	@include container;
+}
+
+body{
+	font-family:$base-font-family;
+	font-size:$base-font-size;
+	line-height:$base-line-height;
+}
+.title{
+	color: #fff;
+	font-size:5rem;
+	font-weight:300;
+}
+
+.word1, .word2, .word3, .word4{
+	@include span(isolate 3 at 3 break);
+	display:inline-block;
+	margin-bottom:-5.15rem;
+}
+
+.word1{
+	margin-top: 9rem;
+}
+
+//nav
+nav{
+	@include span(full);
+	height:45px;
+	position:fixed;
+	top:0;
+	z-index:999;
+}
+
+nav h1{
+	display:inline-block;
+	@include span(7);
+	font-weight:300;
+	font-size:1.2rem;
+	margin-top:8px;
+
+}
+nav ul{
+	list-style:none;
+	@include span(4);
+	margin-top:8px;
+}
+
+nav ul li{
+	display:inline-block;
+	width:span(0.9 of 4);
+}
+nav ul li a{
+	text-decoration:none;
+	color:#fff;
+	font-size:1.1rem;
+	font-weight:300;
+}
+
+// content
+#content{
+	@include span(full no-gutters);
+	position:relative;
+	top:94vh;
+	z-index:100;
+	background-color:-ts-color($bgColor);
+	@include selectanimation(background-color 1s ease-in-out);
+}
+.initialContent{
+	background-color:#000;
+	color:#fff;
+	@include selectanimation(background 0.5s ease-in-out);
+}
+#njpp{
+	@include span(full no-gutters);
+	min-height:60vh;
+	float:none;
+	position:fixed;
+}
+
+#pathos{
+	@include span(isolate 4 at 7 of 12);
+	height:400px;
+	min-height:400px;
+	float:none;
+	margin-top:-1rem;
+}
+
+#pathos h2{
+	font-size: 1.8rem;
+	color:-ts-color(#000);
+
+}
+.present{
+	font-weight:300;
+	font-size:1.5rem;
+	margin-left:span(2);
+	color:-ts-color(#000);
+}
+
+#about{
+	@include span(12 of 12 no-gutters);
+	min-height:800px;
+}
+
+#about h2{
+	width: span(full);
+	font-size:2rem;
+	text-align:center;
+}
+#about .intro{
+	font-size:1.2rem;
+	@include span(isolate 8 at 3 of 12);
+	float:none;
+}
+#about .intro h2{
+	margin-bottom:-1rem;
+}
+
+#about h3{
+	font-size:1.4rem;
+	font-weight:300;
+}
+
+#about .services{
+	@include span(3.5 of 12);
+	&:first-of-type{
+		margin-left: span(0.5);
+	}
+
+}
+
+//BG image
+
+#pageBG{
+	background: url(../imgs/seaAndSky.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#000;
+
+	width: 100%;
+	height:100%;
+	margin:auto;
+	position:fixed;
+	z-index:1;
+	right:0px;
+	bottom: 0px;
+	left:0px;
+	
+}
+.overlay{
+	background-color:transparent;
+	width:100%;
+	height:100%;
+	@include selectanimation(background 0.5s ease-in-out);
+}
+.reveal{
+	background-color:-ts-color($bgColor, 0.9) !important;
+	background-image:none;
+	color:#000;
+	@include selectanimation(background 0.5s ease-in-out);
+}
+
+.darkOnLight{
+	color:#000;
+	@include selectanimation(color 0.5s ease-in-out);
+}
+.lightOnDark{
+	color:#fff !important;
+	@include selectanimation(color 0.5s ease-in-out);
+}
+.darkBG{
+	background-color:-ts-color(#000);
+}
+.transparentBG{
+	
+	background-color:-ts-color(#000, 0);
+	color:#000;
+	@include selectanimation(background-color 1s ease-in-out);
+	@include selectanimation(color 0.5s ease-in-out);
+
+}
+.transparentColor{
+	color: -ts-color(#000, 0);
+
+}
+.invisible{
+	display:none;
+}
+
+.active{
+	border-bottom:1px solid #fff;
+}
+
