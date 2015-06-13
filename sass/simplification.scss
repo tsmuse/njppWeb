@@ -83,6 +83,15 @@ a{
 	}
 }
 
+.logoBox{
+	background-color: -ts-color(#000, 0.5);
+	height: 1rem;
+	width:2px;
+
+	@include breakpoint($medium-viewport){
+	}
+}
+
 .underline{
 	border-bottom:1px solid -ts-color(#000, 0.25);
 	font-weight:600;
@@ -173,8 +182,23 @@ nav ul li a{
 }
 //==== top image area
 
+
 #pageHead{
 	@include span (full no-gutters break);
+	position:relative;
+	top:-1px;
+	height:89vh;
+	
+
+	@include breakpoint($medium-viewport){
+		height:90vh;
+	}
+	@include breakpoint($large-viewport){
+		height:85vh;
+	}
+}
+
+.seaAndSky{
 	background: url(../imgs/seaAndSky_sm.jpg) no-repeat center center scroll;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -182,19 +206,12 @@ nav ul li a{
 	background-size: cover;
 	background-color:#000;
 
-	position:relative;
-	top:-1px;
-	height:89vh;
-	
-
 	@include breakpoint($medium-viewport){
 		background: url(../imgs/seaAndSky_md.jpg) no-repeat center center scroll;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
-
-		height:90vh;
 	}
 	@include breakpoint($large-viewport){
 		background: url(../imgs/seaAndSky.jpg) no-repeat center center scroll;	
@@ -202,10 +219,105 @@ nav ul li a{
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
-
-		height:85vh;
 	}
 }
+
+.hawkAndSea{
+	background: url(../imgs/hawkAndSea_sm.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#000;
+
+	@include breakpoint($medium-viewport){
+		background: url(../imgs/hawkAndSea_md.jpg) no-repeat center center scroll;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	@include breakpoint($large-viewport){
+		background: url(../imgs/hawkAndSea.jpg) no-repeat center center scroll;	
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+}
+
+.aurora{
+	background: url(../imgs/aurora_sm.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#000;
+
+	@include breakpoint($medium-viewport){
+		background: url(../imgs/aurora_md.jpg) no-repeat center center scroll;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	@include breakpoint($large-viewport){
+		background: url(../imgs/aurora.jpg) no-repeat center center scroll;	
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+
+}
+.orangeAndBlueMountains{
+	background: url(../imgs/orangeAndBlueMountains_sm.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color:#000;
+
+	@include breakpoint($medium-viewport){
+		background: url(../imgs/orangeAndBlueMountains_md.jpg) no-repeat center center scroll;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	@include breakpoint($large-viewport){
+		background: url(../imgs/orangeAndBlueMountains.jpg) no-repeat center center scroll;	
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+}
+
+#logoBox{
+	@include span(10);
+	margin-left:span(1);
+	margin-top:5rem;
+
+	@include breakpoint($medium-viewport){
+		@include span(7);
+		margin-top: 10vh;
+	}
+
+	@include breakpoint($large-viewport){
+		@include span(4);
+		margin-top:10vh;
+	}
+}
+
+#logoBox svg{
+	width:86%;
+	fill:-ts-color(#fff,1.0);
+}
+#logoBox svg line{
+	stroke:-ts-color(#fff,1.0);
+}
+
 .title{
 	color: #fff;
 	font-size:3rem;

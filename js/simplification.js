@@ -9,6 +9,24 @@ $(document).ready(function(){
 		.addTo(controller);
 	*/
 
+	// image randomize
+	var bgNumber = Math.floor(Math.random() * 3); //pick a random whole number between 0 and 3
+	var bgClass;
+	switch(bgNumber){
+		case 0:
+				bgClass = "aurora"; //YEP
+				break;
+		case 1:
+				bgClass = "hawkAndSea"; //YEP
+				break;
+		case 2:
+				bgClass = "orangeAndBlueMountains";
+	}
+	$("#pageHead").addClass(bgClass);
+
+	// that's all folks!	
+
+
 	//defeat the spam bots via ( original from: http://www.kevinleary.net/safe-mailtos-with-jquery/)
 	$("a[rel='email']").each(function(){
 		// Modify the mailto: value
