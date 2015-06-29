@@ -61,7 +61,9 @@ html{
 *{
 	box-sizing:inherit;
 }
-
+body{
+	background-color:-ts-color($bgColor);
+}
 
 a{
 	color: -ts-color(#000, 0.8);
@@ -177,8 +179,15 @@ nav ul li a{
 //==== page content
 #content{
 	@include span(full no-gutters);
-	background-color:-ts-color($bgColor);
+	//background-color:-ts-color($bgColor);
 	@include selectanimation(background-color 1s ease-in-out);
+}
+.maxWidthContainer{
+	max-width:1315px;
+	width:100%;
+	margin-left:auto;
+	margin-right:auto;
+
 }
 //==== top image area
 
@@ -313,6 +322,7 @@ nav ul li a{
 #logoBox svg{
 	width:86%;
 	fill:-ts-color(#fff,1.0);
+	max-width:531px;
 }
 #logoBox svg line{
 	stroke:-ts-color(#fff,1.0);
@@ -444,6 +454,7 @@ nav ul li a{
 	padding-right:1rem;
 	font-size:1.2rem;
 	margin-bottom:-0.6rem;
+	max-width:1280px;
 }
 
 #about .intro h2{
@@ -497,6 +508,7 @@ nav ul li a{
 	@include span(full no-gutters break);
 	padding-left:1rem;
 	padding-right:1rem;
+	max-width:328px;
 	&:last-of-type{
 		margin-bottom:1.8rem;
 	}
@@ -573,9 +585,10 @@ nav ul li a{
 	@include breakpoint($large-viewport){
 		clear:none;
 		@include span(4);
-		&:nth-of-type(even){
-			margin-left:span(1);
-		}
+		margin-left: span(2); //remove this when multiple bios are a thing
+		//&:nth-of-type(even){
+		//	margin-left:span(1);
+		//}
 		&:last-of-type{
 			margin-bottom: 5.8rem;
 			clear:right;
@@ -588,6 +601,7 @@ nav ul li a{
 	margin-bottom:0.5rem;
 
 	@include breakpoint($large-viewport){
+
 	}
 }
 .photoAndName > .imgContainer{
